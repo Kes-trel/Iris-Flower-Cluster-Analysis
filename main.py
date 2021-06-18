@@ -1,11 +1,7 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import streamlit as st
 import seaborn as sns
 sns.set()
-from sklearn.cluster import KMeans
-from sklearn import preprocessing
 
 from functions import screen_data, scater_plot, elbow_method, cluster_data, scale_cluster_data
 
