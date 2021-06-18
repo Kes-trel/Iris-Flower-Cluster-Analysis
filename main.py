@@ -13,17 +13,13 @@ raw_data = pd.read_csv("iris_with_species.csv")
 
 st.set_page_config(page_title="Species Segmentation with Cluster Analysis",page_icon="🌼", layout="wide", initial_sidebar_state="auto")
 
-petal_or_sepals = st.sidebar.radio("Select data for analysis", ["Sepal", "Petal"])
+petal_or_sepal = st.sidebar.radio("Select data for analysis", ["Sepal", "Petal"])
 scale_data_box = st.sidebar.checkbox("Scale Data", help="Standardize features by removing the mean and scaling to unit variance. For more info read here: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#")
 
 
-if scale_data_box:
-    data = screen_data(data=raw_data, petal_sepal=petal_or_sepals)
-    data = scale_data(data=data)
-else:
-    data = screen_data(data=raw_data, petal_sepal=petal_or_sepals)
+data = screen_data(petal_sepal=petal_or_sepal, data=raw_data)
 
-st.table(data)
+st.write(data)
 
 #inputs from streamlit app
 

@@ -9,10 +9,11 @@ def scale_data(data):
     return data_scaled
 
 def screen_data(petal_sepal, data):
-    if petal_sepal == "sepal":
+    data_select = data.copy()
+    if petal_sepal == "Sepal":
         data_select = data.iloc[:, :-3]
         return data_select
-    elif petal_sepal == "petal":
+    elif petal_sepal == "Petal":
         data_select = data.iloc[:, 2:-1]
         return data_select
 
