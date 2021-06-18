@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn import preprocessing
+
 def scale_data(data):
     scaler = preprocessing.StandardScaler()
     scaler.fit(data)
