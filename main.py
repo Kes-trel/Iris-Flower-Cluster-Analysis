@@ -14,7 +14,16 @@ raw_data = pd.read_csv("iris_with_species.csv")
 st.set_page_config(page_title="Species Segmentation with Cluster Analysis",page_icon="🌼", layout="wide", initial_sidebar_state="auto")
 
 petal_or_sepals = st.sidebar.radio("Select data for analysis", ["Sepal", "Petal"])
-st.sidebar.checkbox("Scale Data", help="Standardize features by removing the mean and scaling to unit variance. For more info read here: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#")
+scale_data_box = st.sidebar.checkbox("Scale Data", help="Standardize features by removing the mean and scaling to unit variance. For more info read here: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#")
+
+
+if scale_data_box:
+    data = screen_data(data=raw_data, petal_sepal=petal_or_sepals)
+    data = scale_data(data=data)
+else:
+    data = screen_data(data=raw_data, petal_sepal=petal_or_sepals)
+
+st.table(data)
 
 #inputs from streamlit app
 
@@ -34,5 +43,5 @@ if st.sidebar.checkbox("Get help with Elbow Method"):
     number_of_cluster_elbow = st.sidebar.number_input("Select number of cluster", value=5, min_value=1, step=1, format="%i", help="""Cluster number keeps track the highest number of clusters we want to use the WCSS method for.
     More info https://en.wikipedia.org/wiki/Elbow_method_(clustering)""")
 
-    st.
+    st.pyplot(elbow_method(clusters=number_of_cluster_elbow, data=data))
 
